@@ -20,6 +20,11 @@ function init() {
     let sample = names[0];
     console.log(sample);
 
+    dropdownMenu.on("change", function () {
+        let selectedValue = d3.select(this).property("value");
+        diffID(selectedValue);
+    });
+
     chart1(sample);
     chart2(sample);
     chart3(sample);
@@ -33,7 +38,7 @@ function chart1(idsample) {
         let valuedata = value[0];
         d3.select("#sample-metadata").html("");
         Object.entries(valuedata).forEach(([key,value]) => {
-            d3.select("sample-metadata").append("h5").text(`${key}: ${value}`);
+            d3.select("#sample-metadata").append("h5").text(`${key}: ${value}`);
         });
     });
 };
